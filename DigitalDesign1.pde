@@ -112,7 +112,6 @@ class Bullet{
     rotation = atan2(mouseY - playerPos.y, mouseX - playerPos.x)/PI*180;
  }
   void update(){
-    //bulletPos.set(location.x, location.y);
     bulletPos.x = bulletPos.x + cos(rotation/180*PI)*bSpd;
     bulletPos.y = bulletPos.y + sin(rotation/180*PI)*bSpd;
     fill(255, 255, 255);
