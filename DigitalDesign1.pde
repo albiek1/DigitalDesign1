@@ -1,15 +1,19 @@
-
-PVector playerPos = new PVector();
+static final PVector playerPos = new PVector();
 PVector playerVel = new PVector();
 float playerSpd = 5;
 
 PVector bulletPos = new PVector();
 float bSpd = 15;
-int i;
+int i, e;
+
+static final PVector enemyPos = new PVector();
+int spawnBox;
+boolean canSpawn = true;
 
 int Screen = 0;
 
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
 Player player = new Player();
 
@@ -19,6 +23,7 @@ float canShootCounter;
 
 void setup(){
   fullScreen();
+  player = new Player();
 }
 
 void draw(){
@@ -58,12 +63,25 @@ void MenuScreen(){
 void GameScreen(){
   Screen = 2;
   background(0);
-  
+  e = enemies.size();
   player.update();
   
   for (i = bullets.size() -1; i >= 0; i--){
   Bullet bullet = bullets.get(i);
   bullet.update();
+  }
+  
+  if (e <= 5 && canSpawn == true){
+    enemies.add(new Enemy());
+    //Enemy enemy = enemies.get(e);
+    //enemy.update();
+  }
+  if (e >= 5){
+   canSpawn = false;
+  }
+  
+  for(Enemy a : enemies){
+    a.update();
   }
 }
 
@@ -130,6 +148,40 @@ class Bullet{
  }
 }
 
+class Enemy{
+  PVector enemyPos;
+  float rotation;
+  float eSpd = 2;
+  Enemy(){
+    spawnBox = int(random(1, 4));
+    if(spawnBox == 1){
+     enemyPos = new PVector(random(0, 300), random(0, height-200));
+    }
+    else if(spawnBox == 2){
+     enemyPos = new PVector(random(0, width -300), random(height-200, height));
+    }
+    else if(spawnBox == 3){
+     enemyPos = new PVector(random(width-300, width), random(200, height)); 
+    }
+    else if(spawnBox == 4){
+     enemyPos = new PVector(random(300, width), random(0, 200)); 
+    }
+  }
+  void update(){
+    pushMatrix();
+    translate(enemyPos.x, enemyPos.y);
+    rotate(atan2(playerPos.y - enemyPos.y, playerPos.x - enemyPos.x));
+    rectMode(RADIUS);
+    fill(255, 0, 0);
+    rect(0, 0, 25, 25);
+    popMatrix();
+    
+    enemyPos.x = constrain(enemyPos.x, 0, width);
+    enemyPos.y = constrain(enemyPos.y, 0, height);
+    
+    
+  }
+}
 
 void keyPressed(){
  final int k = keyCode;
