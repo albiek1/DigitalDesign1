@@ -1,3 +1,5 @@
+PImage background;
+
 static final PVector playerPos = new PVector();
 PVector playerVel = new PVector();
 float playerSpd = 5;
@@ -28,6 +30,8 @@ float canShootCounter;
 void setup(){
   fullScreen();
   player = new Player();
+  background = loadImage("wallhaven-42r6gy.jpg");
+  background.resize(width, height);
 }
 
 void draw(){
@@ -66,7 +70,7 @@ void MenuScreen(){
 
 void GameScreen(){
   Screen = 2;
-  background(0);
+  background(background);
   e = enemies.size();
   player.update();
   
