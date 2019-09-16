@@ -1,4 +1,4 @@
-class Player{
+  class Player{
   
   Player(){
    playerPos.x = width/2;

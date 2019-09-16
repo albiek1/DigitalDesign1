@@ -23,7 +23,6 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 Player player = new Player();
 
 boolean canShoot = true;
-boolean fire = true;
 float canShootCounter;
 
 void setup(){
