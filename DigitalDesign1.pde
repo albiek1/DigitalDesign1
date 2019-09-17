@@ -9,7 +9,8 @@ float bSpd = 15;
 int i, e;
 
 static final PVector enemyPos = new PVector();
-PVector enemyVel = new PVector();
+static final PVector enemyVel = new PVector();
+static final PVector enemyAcc = new PVector();
 float ax, ay;
 PVector p1 = new PVector(ax, ay);
 int enemySpd = 3;

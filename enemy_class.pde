@@ -1,12 +1,10 @@
 class Enemy{
   PVector enemyPos;
-  PVector forward;
-  ArrayList<PVector> waypoints = new ArrayList<PVector>();
   float rotation;
   float eSpd = 2;
-  int cw = 0;
+  PVector enemyVel;
+  PVector enemyAcc;
   Enemy(){
-    forward = new PVector();
     spawnBox = int(random(1, 4));
     if(spawnBox == 1){
      enemyPos = new PVector(random(0, 300), random(0, height-200));
@@ -20,6 +18,7 @@ class Enemy{
     else if(spawnBox == 4){
      enemyPos = new PVector(random(300, width), random(0, 200)); 
     }
+    eSpd = 2;
   }
   void update(){
     pushMatrix();
@@ -32,6 +31,9 @@ class Enemy{
     
     enemyPos.x = constrain(enemyPos.x, 0, width);
     enemyPos.y = constrain(enemyPos.y, 0, height);
+  }
+  void enemyMovement(){
+    
   }
   
 }
