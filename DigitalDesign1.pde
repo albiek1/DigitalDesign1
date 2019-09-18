@@ -91,6 +91,7 @@ void GameScreen(){
   
   for(Enemy a : enemies){
     a.update();
+    a.enemyMovement();
   }
 }
 

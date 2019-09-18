@@ -33,7 +33,9 @@ class Enemy{
     enemyPos.y = constrain(enemyPos.y, 0, height);
   }
   void enemyMovement(){
-    
+    PVector enemyVel = PVector.sub(playerPos, enemyPos);
+    enemyVel.setMag(3.0);
+    enemyPos.add(enemyVel);
   }
   
 }
