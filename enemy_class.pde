@@ -1,9 +1,9 @@
 class Enemy{
-  PVector enemyPos;
+PVector enemyPos, bulletPos;
   float rotation;
-  float eSpd = 2;
   PVector enemyVel;
   PVector enemyAcc;
+  int enemyHP = 5;
   Enemy(){
     spawnBox = int(random(1, 4));
     if(spawnBox == 1){
@@ -18,19 +18,27 @@ class Enemy{
     else if(spawnBox == 4){
      enemyPos = new PVector(random(300, width), random(0, 200)); 
     }
-    eSpd = 2;
+    enemyHP = 5;
   }
   void update(){
     pushMatrix();
     translate(enemyPos.x, enemyPos.y);
     rotate(atan2(playerPos.y - enemyPos.y, playerPos.x - enemyPos.x));
-    rectMode(RADIUS);
+    rectMode(CENTER);
     fill(255, 0, 0);
-    rect(0, 0, 25, 25);
+    rect(0, 0, 50, 50);
     popMatrix();
+    
+    rectMode(CENTER);
+    fill(255);
+    rect(enemyPos.x, enemyPos.y, 25, 25);
     
     enemyPos.x = constrain(enemyPos.x, 0, width);
     enemyPos.y = constrain(enemyPos.y, 0, height);
+    
+    if(enemyHP <= 0){
+     score += 100;
+    }
   }
   void enemyMovement(){
     PVector enemyVel = PVector.sub(playerPos, enemyPos);

@@ -13,7 +13,9 @@ static final PVector enemyVel = new PVector();
 static final PVector enemyAcc = new PVector();
 float ax, ay;
 PVector p1 = new PVector(ax, ay);
-int enemySpd = 3;
+float enemyHP = 5;
+boolean enemyDie;
+int score;
 
 int spawnBox;
 boolean canSpawn = true;
@@ -74,6 +76,15 @@ void GameScreen(){
   background(background);
   e = enemies.size();
   player.update();
+  
+  rectMode(CORNER);
+  fill(255);
+  rect(width/15, height/15, 200, 75);
+  
+  textSize(35);
+  fill(0);
+  textAlign(RIGHT, BOTTOM);
+  text("Score:"+ " " + score, width/6, height/9);
   
   for (i = bullets.size() -1; i >= 0; i--){
   Bullet bullet = bullets.get(i);

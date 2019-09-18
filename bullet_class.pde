@@ -13,13 +13,17 @@ class Bullet{
     if (bulletPos.x > 0 || bulletPos.x < width || bulletPos.y > 0 || bulletPos.y < height){
     }
     else{
-      bullets.remove(i);
+      bullets.remove(this);
     }
-    /*if (location.x >= enemyPos.x-25 && location.x <= enemyPos.x+25){
-     if (location.y >= enemyPos.y-25 && location.y <= enemyPos.y+25){
-      eHealth -= 1;
-      bullets.remove(i);
+    
+for(Enemy e :enemies){
+    if (bulletPos.x >= e.enemyPos.x-25 && bulletPos.x <= e.enemyPos.x+25){
+     if (bulletPos.y >= e.enemyPos.y-25 && bulletPos.y <= e.enemyPos.y+25){
+      e.enemyHP -= 1;
+      bullets.remove(this);
      }
-    }*/
+    }
+   
+  }
  }
 }
