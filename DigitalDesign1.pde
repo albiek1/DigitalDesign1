@@ -33,91 +33,84 @@ Player player = new Player();
 boolean canShoot = true;
 float canShootCounter;
 
-void setup(){
+void setup() {
   fullScreen();
   player = new Player();
   background = loadImage("wallhaven-42r6gy.jpg");
   background.resize(width, height);
 }
 
-void draw(){
-  if(Screen == 0){
-    StartScreen();}
-  else if(Screen == 1){
-    MenuScreen();}
-  else if(Screen == 2){
-    GameScreen();}
-  else if(Screen == 3){
-    GameOverScreen();}
+void draw() {
+  if (Screen == 0) {
+    StartScreen();
+  } else if (Screen == 1) {
+    MenuScreen();
+  } else if (Screen == 2) {
+    GameScreen();
+  } else if (Screen == 3) {
+    GameOverScreen();
+  }
 }
 
-void StartScreen(){
+void StartScreen() {
   Screen = 0;
   time = 0;
-  if (mousePressed == true){
-   Screen = 1; 
+  if (mousePressed == true) {
+    Screen = 1;
   }
 }
 
-void MenuScreen(){
+void MenuScreen() {
   Screen = 1;
-  
-  if (keyCode == 'Z'){
-   Screen = 2;
-   timeS = second();
-  }
-  else if (keyCode == 'X'){
-   Screen = 2;
-   timeS = second();
-  }
-  
-  else if (keyCode == 'C'){
-   Screen = 2;
-   timeS = second();
+
+  if (keyCode == 'Z') {
+    Screen = 2;
+    timeS = second();
+  } else if (keyCode == 'X') {
+    Screen = 2;
+    timeS = second();
+  } else if (keyCode == 'C') {
+    Screen = 2;
+    timeS = second();
   }
 }
 
-void GameScreen(){
+void GameScreen() {
   Screen = 2;
   background(background);
   e = enemies.size();
   player.update();
-  
-  rectMode(CORNER);
-  fill(255);
-  rect(width/15, height/15, 200, 75);
-  
+
   textSize(35);
-  fill(0);
-  textAlign(RIGHT, BOTTOM);
-  text("Score:"+ " " + score, width/6, height/9);
-  
-  for (i = bullets.size() -1; i >= 0; i--){
-  Bullet bullet = bullets.get(i);
-  bullet.update();
+  fill(255);
+  textAlign(LEFT, BOTTOM);
+  text("Score:"+ " " + score, width/99, height/15);
+
+  for (i = bullets.size() -1; i >= 0; i--) {
+    Bullet bullet = bullets.get(i);
+    bullet.update();
   }
-  
-  if (e <= spawnNum && canSpawn == true){
+
+  if (e <= spawnNum && canSpawn == true) {
     enemies.add(new Enemy());
     //Enemy enemy = enemies.get(e);
     //enemy.update();
   }
-  if (e >= spawnNum){
-   canSpawn = false;
+  if (e >= spawnNum) {
+    canSpawn = false;
   }
-  
-  for(Enemy a : enemies){
+
+  for (Enemy a : enemies) {
     a.update();
     a.enemyMovement();
   }
-  
-  if(second() != timeS && Screen == 2){
-   time++;
-   timeS = second();
+
+  if (second() != timeS && Screen == 2) {
+    time++;
+    timeS = second();
   }
-  
 }
 
-void GameOverScreen(){
+void GameOverScreen() {
   Screen = 3;
 }
