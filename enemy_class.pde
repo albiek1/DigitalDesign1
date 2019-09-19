@@ -40,6 +40,7 @@ PVector enemyPos, bulletPos;
      score += 100;
      newSpawn();
      enemyHP = 5;
+     killNum++;
     }
   }
   void enemyMovement(){

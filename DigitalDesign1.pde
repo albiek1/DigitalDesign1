@@ -16,11 +16,14 @@ PVector p1 = new PVector(ax, ay);
 float enemyHP = 5;
 boolean enemyDie;
 int score;
+int spawnNum, killNum;
 
 int spawnBox;
 boolean canSpawn = true;
 
 int Screen = 0;
+int timeS = 0;
+int time= 0;
 
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -50,7 +53,7 @@ void draw(){
 
 void StartScreen(){
   Screen = 0;
-  
+  time = 0;
   if (mousePressed == true){
    Screen = 1; 
   }
@@ -60,21 +63,24 @@ void MenuScreen(){
   Screen = 1;
   
   if (keyCode == 'Z'){
-   Screen = 2; 
+   Screen = 2;
+   timeS = second();
   }
   else if (keyCode == 'X'){
-   Screen = 2; 
+   Screen = 2;
+   timeS = second();
   }
   
   else if (keyCode == 'C'){
    Screen = 2;
+   timeS = second();
   }
 }
 
 void GameScreen(){
   Screen = 2;
   background(background);
-  e = enemies.size() -1;
+  e = enemies.size();
   player.update();
   
   rectMode(CORNER);
@@ -91,12 +97,12 @@ void GameScreen(){
   bullet.update();
   }
   
-  if (e <= 5 && canSpawn == true){
+  if (e <= spawnNum && canSpawn == true){
     enemies.add(new Enemy());
     //Enemy enemy = enemies.get(e);
     //enemy.update();
   }
-  if (e >= 5){
+  if (e >= spawnNum){
    canSpawn = false;
   }
   
@@ -104,6 +110,12 @@ void GameScreen(){
     a.update();
     a.enemyMovement();
   }
+  
+  if(second() != timeS && Screen == 2){
+   time++;
+   timeS = second();
+  }
+  
 }
 
 void GameOverScreen(){
