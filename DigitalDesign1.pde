@@ -74,7 +74,7 @@ void MenuScreen(){
 void GameScreen(){
   Screen = 2;
   background(background);
-  e = enemies.size();
+  e = enemies.size() -1;
   player.update();
   
   rectMode(CORNER);

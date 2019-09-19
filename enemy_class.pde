@@ -38,6 +38,8 @@ PVector enemyPos, bulletPos;
     
     if(enemyHP <= 0){
      score += 100;
+     newSpawn();
+     enemyHP = 5;
     }
   }
   void enemyMovement(){
