@@ -3,6 +3,7 @@ PImage background;
 static final PVector playerPos = new PVector();
 PVector playerVel = new PVector();
 float playerSpd = 5;
+int life = 5;
 
 PVector bulletPos = new PVector();
 float bSpd = 15;
@@ -125,7 +126,6 @@ void GameScreen(){
    time++;
    timeS = second();
   }
-  
   
 }
 

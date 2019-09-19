@@ -23,6 +23,11 @@ for(Enemy e :enemies){
       bullets.remove(this);
      }
     }
+    if(e.enemyPos.x >= playerPos.x-35 && e.enemyPos.x <= playerPos.x+35){
+     if(e.enemyPos.y >= playerPos.y-35 && e.enemyPos.y <= playerPos.y+35){
+       
+     }
+    }
   }
  }
 }
