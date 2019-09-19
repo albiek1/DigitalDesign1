@@ -14,7 +14,7 @@ static final PVector enemyAcc = new PVector();
 float ax, ay;
 PVector p1 = new PVector(ax, ay);
 float enemyHP = 5;
-boolean enemyDie;
+boolean enemyDie = false;
 int score;
 int spawnNum, killNum;
 
@@ -24,6 +24,7 @@ boolean canSpawn = true;
 int Screen = 0;
 int timeS = 0;
 int time= 0;
+int timeAdd;
 
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -79,6 +80,7 @@ void MenuScreen(){
 
 void GameScreen(){
   Screen = 2;
+  spawnNum = 5;
   background(background);
   e = enemies.size();
   player.update();
@@ -97,24 +99,33 @@ void GameScreen(){
   bullet.update();
   }
   
-  if (e <= spawnNum && canSpawn == true){
+  if (e < spawnNum && canSpawn == true){
     enemies.add(new Enemy());
     //Enemy enemy = enemies.get(e);
     //enemy.update();
   }
-  if (e >= spawnNum){
+  if (e > spawnNum){
    canSpawn = false;
   }
   
-  for(Enemy a : enemies){
-    a.update();
-    a.enemyMovement();
+  
+  
+  for(int i2 = enemies.size()-1; i2>=0; i2--){
+   Enemy enemy = enemies.get(i2);
+   enemy.update();
+   enemy.enemyMovement();
   }
+  
+  /*for(Enemy a : enemies){
+    a.enemyMovement();
+    a.update();
+  }*/
   
   if(second() != timeS && Screen == 2){
    time++;
    timeS = second();
   }
+  
   
 }
 

@@ -23,7 +23,6 @@ for(Enemy e :enemies){
       bullets.remove(this);
      }
     }
-   
   }
  }
 }
