@@ -20,6 +20,7 @@ PVector enemyPos, bulletPos;
     }
     enemyHP = 5;
   }
+  
   void update(){
     pushMatrix();
     translate(enemyPos.x, enemyPos.y);
@@ -41,8 +42,10 @@ PVector enemyPos, bulletPos;
      newSpawn();
      enemyHP = 5;
      killNum++;
+     enemies.remove(this);
     }
   }
+  
   void enemyMovement(){
     PVector enemyVel = PVector.sub(playerPos, enemyPos);
     enemyVel.setMag(3.0);
