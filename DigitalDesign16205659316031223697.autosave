@@ -40,10 +40,8 @@ void setup() {
   background.resize(width, height);
 }
 
-void draw() {
-  playerDeath();
-
-  if (Screen == 0) {
+void draw() {  
+  playerDeath(); if (Screen == 0) {
     StartScreen();
   } else if (Screen == 1) {
     MenuScreen();
@@ -111,23 +109,12 @@ void GameScreen() {
     time++;
     timeS = second();
   }
+  
+  playerDeath();
 }
 
 void GameOverScreen() {
   Screen = 3;
-  fill(200);
-  rect(0, 0, 100, 100);
-}
-
-
-void playerDeath() {
-  for (Enemy enemy : enemies) {
-    if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
-      if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
-        //GameOverScreen();
-        Screen = 3;
-        println("Game Over");
-      }
-    }
-  }
+  fill(124);
+  rect(0, 0, 400, 400);
 }
