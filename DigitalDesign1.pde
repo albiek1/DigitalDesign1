@@ -79,6 +79,7 @@ void StartScreen() {
 
 void GameScreen() {
   Screen = 1;
+  enemyHP = 5;
   spawnNum = 5;
   background(background);
   e = enemies.size();
@@ -148,6 +149,10 @@ void GameOverScreen() {
     if (mousePressed) {
       Screen = 1;
       life = 5;
+      enemyHP = 0;
+      score = 0;
+      time = 0;
+      killNum = 0;
     }
   }
 }
@@ -157,8 +162,7 @@ void playerDeath() {
     if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
       if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
         life--;
-        Screen = 2;
-        enemy.enemyHP -= 5;
+        enemyHP = 0;
         println("Game Over");
       }
     }
