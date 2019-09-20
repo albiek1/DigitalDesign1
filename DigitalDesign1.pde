@@ -49,8 +49,6 @@ void setup() {
 }
 
 void draw() {
-  playerDeath();
-
   if (Screen == 0) {
     StartScreen();
   } else if (Screen == 1) {
@@ -91,7 +89,7 @@ void GameScreen() {
   background(background);
   e = enemies.size();
   player.update();
-
+  playerDeath();
   textSize(35);
   fill(255);
   textAlign(LEFT, BOTTOM);
