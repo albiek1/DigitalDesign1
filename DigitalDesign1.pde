@@ -101,7 +101,6 @@ void GameScreen() {
   if (e > spawnNum) {
     canSpawn = false;
   }
-<<<<<<< HEAD
   
   playerDeath();
   
@@ -113,7 +112,6 @@ void GameScreen() {
    Enemy enemy = enemies.get(i2);
    enemy.update();
    enemy.enemyMovement();
-=======
 
 
 
@@ -121,7 +119,6 @@ void GameScreen() {
     Enemy enemy = enemies.get(i2);
     enemy.update();
     enemy.enemyMovement();
->>>>>>> 0555155a15bc498253290de2a7b1078284f5d8a1
   }
 
   if (second() != timeS && Screen == 2) {
@@ -146,12 +143,10 @@ void playerDeath() {
     if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
       if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
         //GameOverScreen();
-<<<<<<< HEAD
         life--;
-=======
+
         Screen = 2;
         println("Game Over");
->>>>>>> 0555155a15bc498253290de2a7b1078284f5d8a1
       }
     }
   }
