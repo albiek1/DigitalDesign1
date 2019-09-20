@@ -1,4 +1,6 @@
 PImage background;
+PImage infoScreen;
+PImage gameOverScreen;
 
 static final PVector playerPos = new PVector();
 PVector playerVel = new PVector();
@@ -40,6 +42,10 @@ void setup() {
   player = new Player();
   background = loadImage("wallhaven-42r6gy.jpg");
   background.resize(width, height);
+  infoScreen = loadImage("Info Screen Shoot Em Up.jpg");
+  infoScreen.resize(width, height);
+  gameOverScreen = loadImage("Game Over Shoot Em Up.jpg");
+  gameOverScreen.resize(width, height);
 }
 
 void draw() {
@@ -59,6 +65,7 @@ void draw() {
 void StartScreen() {
   Screen = 0;
   time = 0;
+  background(infoScreen);
   if (mousePressed == true) {
     Screen = 1;
   }
@@ -66,7 +73,6 @@ void StartScreen() {
 
 void MenuScreen() {
   Screen = 1;
-
   if (keyCode == 'Z') {
     Screen = 2;
     timeS = second();
@@ -127,8 +133,7 @@ void GameScreen() {
 
 void GameOverScreen() {
   Screen = 3;
-  fill(200);
-  rect(0, 0, 100, 100);
+  background(gameOverScreen);
 }
 
 
