@@ -43,8 +43,6 @@ void setup() {
 }
 
 void draw() {
-  playerDeath();
-
   if (Screen == 0) {
     StartScreen();
   } else if (Screen == 1) {
@@ -105,7 +103,7 @@ void GameScreen() {
    canSpawn = false;
   }
   
-  
+  playerDeath();
   
   for(int i2 = enemies.size()-1; i2>=0; i2--){
    Enemy enemy = enemies.get(i2);
