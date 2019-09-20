@@ -147,6 +147,7 @@ void GameOverScreen() {
   if (mouseX >= width/2-300-100 && mouseX <= width/2-300+100 && mouseY >= height-100-25 && mouseY <= height-100+25) {
     if (mousePressed) {
       Screen = 1;
+      life = 5;
     }
   }
 }
