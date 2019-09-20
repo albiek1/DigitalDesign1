@@ -5,7 +5,7 @@ PImage gameOverScreen;
 static final PVector playerPos = new PVector();
 PVector playerVel = new PVector();
 float playerSpd = 5;
-int life = 5;
+int life = 10;
 
 PVector bulletPos = new PVector();
 float bSpd = 15;
@@ -148,7 +148,7 @@ void GameOverScreen() {
   if (mouseX >= width/2-300-100 && mouseX <= width/2-300+100 && mouseY >= height-100-25 && mouseY <= height-100+25) {
     if (mousePressed) {
       Screen = 1;
-      life = 5;
+      life = 10;
       enemyHP = 0;
       score = 0;
       time = 0;
@@ -164,7 +164,7 @@ void playerDeath() {
         life--;
         enemyHP = 0;
         enemy.enemyHP = 0;
-        println("Game Over");
+        println("Current HP" + " " + life);
       }
     }
   }
