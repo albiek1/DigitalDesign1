@@ -102,20 +102,20 @@ void GameScreen() {
   if (e > spawnNum) {
     canSpawn = false;
   }
-  
+
   playerDeath();
-  
-  if(life <= 0){
-   GameOverScreen(); 
-  }
-  
-  for(int i2 = enemies.size()-1; i2>=0; i2--){
-   Enemy enemy = enemies.get(i2);
-   enemy.update();
-   enemy.enemyMovement();
+
+  if (life <= 0) {
+    GameOverScreen();
   }
 
+  for (int i2 = enemies.size()-1; i2>=0; i2--) {
+    Enemy enemy = enemies.get(i2);
+    enemy.update();
+    enemy.enemyMovement();
   }
+
+
 
   for (int i2 = enemies.size()-1; i2>=0; i2--) {
     Enemy enemy = enemies.get(i2);
@@ -140,8 +140,16 @@ void GameOverScreen() {
   rectMode(CENTER);
   fill(255);
   rect(width/2-300, height-100, 200, 50, 7);
+  textSize(35);
+  fill(55);
+  textAlign(CENTER, BOTTOM);
+  text("Retry", width/2-300, height-80);
+  if (mouseX >= width/2-300-100 && mouseX <= width/2-300+100 && mouseY >= height-100-25 && mouseY <= height-100+25) {
+    if (mousePressed) {
+      Screen = 1;
+    }
+  }
 }
-
 
 void playerDeath() {
   for (Enemy enemy : enemies) {
