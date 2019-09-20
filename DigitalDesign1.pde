@@ -42,7 +42,7 @@ void setup() {
   player = new Player();
   background = loadImage("wallhaven-42r6gy.jpg");
   background.resize(width, height);
-  infoScreen = loadImage("Info Screen Shoot Em Up.jpg");
+  infoScreen = loadImage("InfoScreen Shoot Em Up Game.jpg");
   infoScreen.resize(width, height);
   gameOverScreen = loadImage("Clean Game Over Screen.jpg");
   gameOverScreen.resize(width, height);
@@ -52,10 +52,8 @@ void draw() {
   if (Screen == 0) {
     StartScreen();
   } else if (Screen == 1) {
-    MenuScreen();
-  } else if (Screen == 2) {
     GameScreen();
-  } else if (Screen == 3) {
+  } else if (Screen == 2) {
     GameOverScreen();
   }
 }
@@ -64,27 +62,22 @@ void StartScreen() {
   Screen = 0;
   time = 0;
   background(infoScreen);
-  if (mousePressed == true) {
-    Screen = 1;
-  }
-}
-
-void MenuScreen() {
-  Screen = 1;
-  if (keyCode == 'Z') {
-    Screen = 2;
-    timeS = second();
-  } else if (keyCode == 'X') {
-    Screen = 2;
-    timeS = second();
-  } else if (keyCode == 'C') {
-    Screen = 2;
-    timeS = second();
+  rectMode(CENTER);
+  fill(255, 255, 255);
+  rect(width/2, height/12, 600, 120);
+  textSize(35);
+  fill(55);
+  textAlign(CENTER, BOTTOM);
+  text("Press To Continue", width/2, height/10);
+  if (mouseX >= width/2-300 && mouseX <= width/2+300 && mouseY >= height/12-60 && mouseY <= height/12+60) {
+    if (mousePressed) {
+      Screen = 1;
+    }
   }
 }
 
 void GameScreen() {
-  Screen = 2;
+  Screen = 1;
   spawnNum = 5;
   background(background);
   e = enemies.size();
@@ -99,38 +92,32 @@ void GameScreen() {
     Bullet bullet = bullets.get(i);
     bullet.update();
   }
-  
-  if (e < spawnNum && canSpawn == true){
+
+  if (e < spawnNum && canSpawn == true) {
     enemies.add(new Enemy());
     //Enemy enemy = enemies.get(e);
     //enemy.update();
   }
-  if (e > spawnNum){
-   canSpawn = false;
+  if (e > spawnNum) {
+    canSpawn = false;
   }
-  
-  
-  
-  for(int i2 = enemies.size()-1; i2>=0; i2--){
-   Enemy enemy = enemies.get(i2);
-   enemy.update();
-   enemy.enemyMovement();
+
+
+
+  for (int i2 = enemies.size()-1; i2>=0; i2--) {
+    Enemy enemy = enemies.get(i2);
+    enemy.update();
+    enemy.enemyMovement();
   }
-  
-  /*for(Enemy a : enemies){
-    a.enemyMovement();
-    a.update();
-  }*/
-  
-  if(second() != timeS && Screen == 2){
-   time++;
-   timeS = second();
+
+  if (second() != timeS && Screen == 2) {
+    time++;
+    timeS = second();
   }
-  
 }
 
 void GameOverScreen() {
-  Screen = 3;
+  Screen = 2;
   background(gameOverScreen);
   textSize(35);
   fill(255);
@@ -145,7 +132,7 @@ void playerDeath() {
     if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
       if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
         //GameOverScreen();
-        Screen = 3;
+        Screen = 2;
         println("Game Over");
       }
     }
