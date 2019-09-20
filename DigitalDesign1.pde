@@ -163,6 +163,7 @@ void playerDeath() {
       if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
         life--;
         enemyHP = 0;
+        enemy.enemyHP = 0;
         println("Game Over");
       }
     }
