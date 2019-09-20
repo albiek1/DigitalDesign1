@@ -46,6 +46,7 @@ void setup() {
   infoScreen.resize(width, height);
   gameOverScreen = loadImage("Clean Game Over Screen.jpg");
   gameOverScreen.resize(width, height);
+  frameRate(60);
 }
 
 void draw() {
@@ -112,6 +113,7 @@ void GameScreen() {
    Enemy enemy = enemies.get(i2);
    enemy.update();
    enemy.enemyMovement();
+  }
 
 
 
@@ -135,6 +137,9 @@ void GameOverScreen() {
   textAlign(LEFT, BOTTOM);
   text("Total Score:"+ " " + score, width/99, height/2);
   text("Enemies Killed:"+ " " + killNum, width/99, height/3);
+  rectMode(CENTER);
+  fill(255);
+  rect(width/2-300, height-100, 200, 50, 7);
 }
 
 

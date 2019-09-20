@@ -45,7 +45,7 @@ class Enemy {
 
   void enemyMovement() {
     PVector enemyVel = PVector.sub(playerPos, enemyPos);
-    enemyVel.setMag(3.0);
+    enemyVel.setMag(2.5);
     enemyPos.add(enemyVel);
   }
 
