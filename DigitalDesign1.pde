@@ -105,6 +105,10 @@ void GameScreen() {
   
   playerDeath();
   
+  if(life <= 0){
+   GameOverScreen(); 
+  }
+  
   for(int i2 = enemies.size()-1; i2>=0; i2--){
    Enemy enemy = enemies.get(i2);
    enemy.update();
@@ -135,8 +139,7 @@ void playerDeath() {
     if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
       if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
         //GameOverScreen();
-        Screen = 3;
-        println("Game Over");
+        life--;
       }
     }
   }
