@@ -44,7 +44,7 @@ void setup() {
   background.resize(width, height);
   infoScreen = loadImage("Info Screen Shoot Em Up.jpg");
   infoScreen.resize(width, height);
-  gameOverScreen = loadImage("Game Over Shoot Em Up.jpg");
+  gameOverScreen = loadImage("Clean Game Over Screen.jpg");
   gameOverScreen.resize(width, height);
 }
 
@@ -132,6 +132,11 @@ void GameScreen() {
 void GameOverScreen() {
   Screen = 3;
   background(gameOverScreen);
+  textSize(35);
+  fill(255);
+  textAlign(LEFT, BOTTOM);
+  text("Total Score:"+ " " + score, width/99, height/2);
+  text("Enemies Killed:"+ " " + killNum, width/99, height/3);
 }
 
 
