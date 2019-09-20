@@ -113,7 +113,7 @@ void GameScreen() {
    enemy.update();
    enemy.enemyMovement();
 
-
+  }
 
   for (int i2 = enemies.size()-1; i2>=0; i2--) {
     Enemy enemy = enemies.get(i2);
@@ -142,9 +142,7 @@ void playerDeath() {
   for (Enemy enemy : enemies) {
     if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
       if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
-        //GameOverScreen();
         life--;
-
         Screen = 2;
         println("Game Over");
       }
