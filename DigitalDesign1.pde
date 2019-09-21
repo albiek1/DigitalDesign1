@@ -89,7 +89,11 @@ void GameScreen() {
   fill(255);
   textAlign(LEFT, BOTTOM);
   text("Score:"+ " " + score, width/99, height/15);
-
+  textSize(35);
+  fill(255);
+  textAlign(CENTER, BOTTOM);
+  text("Lives:"+ " " + life/2, width/2, height/15);
+  
   for (i = bullets.size() -1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
     bullet.update();
