@@ -1,3 +1,4 @@
+//Class for the Player's attributes and keybinds
 class Player {
 
   Player() {

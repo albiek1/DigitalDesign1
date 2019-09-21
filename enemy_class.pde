@@ -1,3 +1,4 @@
+//Class for everything related to Enemies such as look, spawn and attributes 
 class Enemy {
   PVector enemyPos, bulletPos;
   float rotation;

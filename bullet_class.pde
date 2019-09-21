@@ -1,3 +1,4 @@
+//Class for Bullet with all attributes as well as the remove bullet when it either hits an enemy or goes out of bounds
 class Bullet {
   float rotation;
   PVector bulletPos;

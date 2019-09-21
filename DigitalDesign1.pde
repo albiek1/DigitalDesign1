@@ -38,6 +38,7 @@ Player player = new Player();
 boolean canShoot = true;
 float canShootCounter;
 
+//Setup of the program where images are loaded 
 void setup() {
   fullScreen();
   player = new Player();
@@ -52,6 +53,7 @@ void setup() {
   frameRate(60);
 }
 
+//Draws the different screens
 void draw() {
   if (Screen == 0) {
     StartScreen();
@@ -62,10 +64,12 @@ void draw() {
   }
 }
 
+//AKA the Infoscreen with information about movement of the game
 void StartScreen() {
   Screen = 0;
   time = 0;
   background(infoScreen);
+  //Button to continue to game screen
   rectMode(CENTER);
   fill(255, 255, 255);
   rect(width/2, height/12, 600, 120);
@@ -80,6 +84,7 @@ void StartScreen() {
   }
 }
 
+//Where the action and slaying monsters happen
 void GameScreen() {
   Screen = 1;
   enemyHP = 5;
@@ -138,14 +143,17 @@ void GameScreen() {
   }
 }
 
+//The end screen where the player's stats appear
 void GameOverScreen() {
   Screen = 2;
   background(gameOverScreen);
+  //Display of Score
   textSize(35);
   fill(255);
   textAlign(LEFT, BOTTOM);
   text("Total Score:"+ " " + score, width/99, height/2);
   text("Enemies Killed:"+ " " + killNum, width/99, height/3);
+  //Retry button to contiune playing the game without having to relaunch the game
   rectMode(CENTER);
   fill(255);
   rect(width/2-300, height-100, 200, 50, 7);
@@ -165,6 +173,7 @@ void GameOverScreen() {
   }
 }
 
+//Checks if Player has been hit by an enemy
 void playerDeath() {
   for (Enemy enemy : enemies) {
     if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
