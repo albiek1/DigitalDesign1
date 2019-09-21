@@ -1,6 +1,7 @@
 PImage background;
 PImage infoScreen;
 PImage gameOverScreen;
+PImage lifePNG;
 
 static final PVector playerPos = new PVector();
 PVector playerVel = new PVector();
@@ -46,6 +47,8 @@ void setup() {
   infoScreen.resize(width, height);
   gameOverScreen = loadImage("Clean Game Over Screen.jpg");
   gameOverScreen.resize(width, height);
+  lifePNG = loadImage("Heart Shoot em up.png");
+  lifePNG.resize(width/20, height/15);
   frameRate(60);
 }
 
@@ -89,11 +92,12 @@ void GameScreen() {
   fill(255);
   textAlign(LEFT, BOTTOM);
   text("Score:"+ " " + score, width/99, height/15);
-  textSize(35);
+  textSize(40);
   fill(255);
-  textAlign(CENTER, BOTTOM);
-  text("Lives:"+ " " + life/2, width/2, height/15);
-  
+  textAlign(RIGHT, BOTTOM);
+  text(life/2 + "   ", width/2, height/13);
+  image(lifePNG, width/2.5, height/60);
+
   for (i = bullets.size() -1; i >= 0; i--) {
     Bullet bullet = bullets.get(i);
     bullet.update();
@@ -168,7 +172,6 @@ void playerDeath() {
         life--;
         enemyHP = 0;
         enemy.enemyHP = 0;
-        println("Current HP" + " " + life);
       }
     }
   }
