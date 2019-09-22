@@ -20,7 +20,7 @@ PVector p1 = new PVector(ax, ay);
 float enemyHP = 5;
 boolean enemyDie = false;
 int score;
-int spawnNum, killNum;
+int spawnNum = 5, killNum, newWave = 5;
 
 int spawnBox;
 boolean canSpawn = true;
@@ -28,7 +28,7 @@ boolean canSpawn = true;
 int Screen = 0;
 int timeS = 0;
 int time= 0;
-int timeAdd;
+int timeW;
 
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 ArrayList<EnemyA> enemiesA = new ArrayList<EnemyA>();
@@ -68,6 +68,7 @@ void draw() {
 //AKA the Infoscreen with information about movement of the game
 void StartScreen() {
   Screen = 0;
+  killNum = 0;
   time = 0;
   background(infoScreen);
   //Button to continue to game screen
@@ -89,7 +90,6 @@ void StartScreen() {
 void GameScreen() {
   Screen = 1;
   enemyHP = 5;
-  spawnNum = 5;
   background(background);
   e = enemiesA.size();
   player.update();
@@ -133,7 +133,7 @@ void GameScreen() {
    enemyB.enemyMovement();
   }
   
-  if (enemiesB.size() < spawnNum){
+  if (enemiesB.size() < spawnNum + 3){
     enemiesB.add(new EnemyB());
   }
 
@@ -141,6 +141,11 @@ void GameScreen() {
     time++;
     timeS = second();
   }
+  if(killNum >= newWave){
+   spawnNum = spawnNum+1;
+   newWave = killNum+5;
+  }
+  
 }
 
 //The end screen where the player's stats appear
