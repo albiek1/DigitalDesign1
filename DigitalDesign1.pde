@@ -145,7 +145,7 @@ void GameScreen() {
    spawnNum = spawnNum+1;
    newWave = killNum+5;
   }
-  
+  constrain(spawnNum, 0, 13);
 }
 
 //The end screen where the player's stats appear
