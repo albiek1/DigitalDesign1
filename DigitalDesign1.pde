@@ -31,7 +31,8 @@ int time= 0;
 int timeAdd;
 
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<EnemyA> enemiesA = new ArrayList<EnemyA>();
+ArrayList<EnemyB> enemiesB = new ArrayList<EnemyB>();
 
 Player player = new Player();
 
@@ -90,7 +91,7 @@ void GameScreen() {
   enemyHP = 5;
   spawnNum = 5;
   background(background);
-  e = enemies.size();
+  e = enemiesA.size();
   player.update();
   playerDeath();
   textSize(35);
@@ -108,13 +109,10 @@ void GameScreen() {
     bullet.update();
   }
 
-  if (e < spawnNum && canSpawn == true) {
-    enemies.add(new Enemy());
+  if (enemiesA.size() < spawnNum) {
+    enemiesA.add(new EnemyA());
     //Enemy enemy = enemies.get(e);
     //enemy.update();
-  }
-  if (e > spawnNum) {
-    canSpawn = false;
   }
 
   playerDeath();
@@ -123,18 +121,20 @@ void GameScreen() {
     GameOverScreen();
   }
 
-  for (int i2 = enemies.size()-1; i2>=0; i2--) {
-    Enemy enemy = enemies.get(i2);
-    enemy.update();
-    enemy.enemyMovement();
+  for (int i2 = enemiesA.size()-1; i2>=0; i2--) {
+    EnemyA enemyA = enemiesA.get(i2);
+    enemyA.update();
+    enemyA.enemyMovement();
   }
-
-
-
-  for (int i2 = enemies.size()-1; i2>=0; i2--) {
-    Enemy enemy = enemies.get(i2);
-    enemy.update();
-    enemy.enemyMovement();
+  
+  for (int i3 = enemiesB.size()-1; i3>=0; i3--){
+   EnemyB enemyB = enemiesB.get(i3);
+   enemyB.update();
+   enemyB.enemyMovement();
+  }
+  
+  if (enemiesB.size() < spawnNum){
+    enemiesB.add(new EnemyB());
   }
 
   if (second() != timeS && Screen == 2) {
@@ -175,12 +175,21 @@ void GameOverScreen() {
 
 //Checks if Player has been hit by an enemy
 void playerDeath() {
-  for (Enemy enemy : enemies) {
-    if (playerPos.x >= enemy.enemyPos.x-25 && playerPos.x <= enemy.enemyPos.x+25) {
-      if (playerPos.y >= enemy.enemyPos.y-25 && playerPos.y <= enemy.enemyPos.y+25) {
+  for (EnemyA enemyA : enemiesA) {
+    if (playerPos.x >= enemyA.enemyPos.x-25 && playerPos.x <= enemyA.enemyPos.x+25) {
+      if (playerPos.y >= enemyA.enemyPos.y-25 && playerPos.y <= enemyA.enemyPos.y+25) {
         life--;
         enemyHP = 0;
-        enemy.enemyHP = 0;
+        enemyA.enemyHP = 0;
+      }
+    }
+  }
+  for (EnemyB enemyB : enemiesB) {
+    if (playerPos.x >= enemyB.enemyPos.x-25 && playerPos.x <= enemyB.enemyPos.x+25) {
+      if (playerPos.y >= enemyB.enemyPos.y-25 && playerPos.y <= enemyB.enemyPos.y+25) {
+        life--;
+        enemyHP = 0;
+        enemyB.enemyHP2 = 0;
       }
     }
   }

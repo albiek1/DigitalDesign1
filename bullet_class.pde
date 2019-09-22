@@ -16,17 +16,21 @@ class Bullet {
       bullets.remove(this);
     }
 
-    for (Enemy e : enemies) {
+    for (EnemyA e : enemiesA) {
       if (bulletPos.x >= e.enemyPos.x-25 && bulletPos.x <= e.enemyPos.x+25) {
         if (bulletPos.y >= e.enemyPos.y-25 && bulletPos.y <= e.enemyPos.y+25) {
           e.enemyHP -= 1;
           bullets.remove(this);
         }
       }
-      if (e.enemyPos.x >= playerPos.x-35 && e.enemyPos.x <= playerPos.x+35) {
-        if (e.enemyPos.y >= playerPos.y-35 && e.enemyPos.y <= playerPos.y+35) {
-        }
-      }
     }
+   for (EnemyB e2 : enemiesB){
+     if (bulletPos.x >= e2.enemyPos.x-25 && bulletPos.x <= e2.enemyPos.x+25) {
+       if (bulletPos.y >= e2.enemyPos.y-25 && bulletPos.y <= e2.enemyPos.y+25) {
+         e2.enemyHP2 -= 1;
+         bullets.remove(this);
+    }
+   }
+   }
   }
 }
